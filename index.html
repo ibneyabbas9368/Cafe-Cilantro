@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Cilantro | Taste the Perfection</title>
+    
+    <!-- Google Fonts: Playfair Display for elegant headings, Poppins for clean body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        cilantro: {
+                            50: '#f2f7f4',
+                            100: '#e1efe6',
+                            200: '#c5e0d0',
+                            300: '#9bc8af',
+                            400: '#6ca988',
+                            500: '#4b8d69',
+                            600: '#386f51',
+                            700: '#2e5942', // Core Brand Green
+                            800: '#264736',
+                            900: '#203a2e',
+                        },
+                        cream: '#FDFBF7',
+                        coffee: '#4A3623'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom utilities */
+        .glass-nav {
+            background: rgba(253, 251, 247, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(20, 20, 20, 0.8) 0%, rgba(20, 20, 20, 0.4) 100%);
+        }
+
+        /* Hide scrollbar for clean horizontal scroll areas if needed */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans bg-cream text-gray-800 antialiased selection:bg-cilantro-300 selection:text-cilantro-900">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <i class="fa-solid fa-leaf text-cilantro-500 text-2xl group-hover:rotate-12 transition-transform"></i>
+                    <span class="font-serif text-2xl font-bold text-white transition-colors duration-300" id="nav-logo-text">Cafe Cilantro</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-cilantro-400 font-medium transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-white hover:text-cilantro-400 font-medium transition-colors">Our Story</a>
+                    <a href="#menu" class="nav-link text-white hover:text-cilantro-400 font-medium transition-colors">Menu</a>
+                    <a href="#contact" class="nav-link text-white hover:text-cilantro-400 font-medium transition-colors">Contact</a>
+                    <a href="#contact" class="bg-cilantro-600 hover:bg-cilantro-700 text-white px-6 py-2 rounded-full font-medium transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Book a Table</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl flex-col items-center py-6 space-y-4">
+            <a href="#home" class="text-gray-800 font-medium hover:text-cilantro-600 w-full text-center py-2">Home</a>
+            <a href="#about" class="text-gray-800 font-medium hover:text-cilantro-600 w-full text-center py-2">Our Story</a>
+            <a href="#menu" class="text-gray-800 font-medium hover:text-cilantro-600 w-full text-center py-2">Menu</a>
+            <a href="#contact" class="text-gray-800 font-medium hover:text-cilantro-600 w-full text-center py-2">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80" alt="Cafe Interior" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20 fade-up">
+            <span class="block text-cilantro-300 font-medium tracking-widest uppercase mb-4 text-sm md:text-base">Welcome to Faisalabad's Finest</span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+                Savor the Moments at <br/> <span class="text-cilantro-400">Cafe Cilantro</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light">
+                Experience a blend of vibrant flavors, fresh ingredients, and a cozy ambiance right in the heart of the city. 
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" class="w-full sm:w-auto bg-cilantro-600 hover:bg-cilantro-700 text-white px-8 py-3.5 rounded-full font-medium transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center">
+                    Explore Menu
+                </a>
+                <a href="https://www.instagram.com/cafecilantropk/?hl=en" target="_blank" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-3.5 rounded-full font-medium transition-all text-center flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-instagram"></i> Follow Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 md:py-32 bg-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Images Grid -->
+                <div class="grid grid-cols-2 gap-4 relative fade-up">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=600&q=80" alt="Latte Art" class="rounded-2xl shadow-lg w-full h-64 object-cover transform translate-y-8">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Gourmet Burger" class="rounded-2xl shadow-lg w-full h-64 object-cover">
+                    <div class="absolute -z-10 w-64 h-64 bg-cilantro-200 rounded-full blur-3xl opacity-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="pl-0 md:pl-10 fade-up">
+                    <span class="text-cilantro-600 font-bold tracking-wider uppercase text-sm mb-2 block">Our Story</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">More than just a cafe. A community.</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        At <strong>Cafe Cilantro</strong>, we believe that great food brings people together. Nestled in Faisalabad, we source the freshest local ingredients to craft continental dishes, gourmet burgers, and artisanal coffee that comfort the soul.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Whether you're looking for a quiet corner to work, catching up with old friends, or treating your family to a beautiful dinner, our doors are open to offer you an unforgettable aesthetic and culinary experience.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="text-3xl font-serif font-bold text-cilantro-700 mb-1">Fresh</h4>
+                            <p class="text-sm text-gray-500">Premium Ingredients</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-serif font-bold text-cilantro-700 mb-1">Cozy</h4>
+                            <p class="text-sm text-gray-500">Modern Ambiance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <span class="text-cilantro-600 font-bold tracking-wider uppercase text-sm mb-2 block">Our Offerings</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">Featured Menu</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">A glimpse into our chef's favorites. From hearty meals to delightful desserts.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group fade-up">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Cilantro Special Burger" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-cilantro-700 font-bold text-sm shadow">
+                            Popular
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-serif font-bold text-gray-900">Cilantro Signature Burger</h3>
+                            <span class="text-lg font-semibold text-cilantro-600">Rs. 850</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Juicy beef patty, caramelized onions, melted cheddar, and our secret cilantro mayo in a toasted brioche bun.</p>
+                        <button class="text-cilantro-600 font-medium hover:text-cilantro-800 transition-colors flex items-center gap-2">
+                            Order Now <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group fade-up" style="transition-delay: 100ms;">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://images.unsplash.com/photo-1621996360216-9128f7311746?auto=format&fit=crop&w=600&q=80" alt="Alfredo Pasta" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-serif font-bold text-gray-900">Creamy Alfredo Pasta</h3>
+                            <span class="text-lg font-semibold text-cilantro-600">Rs. 1100</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Fettuccine tossed in a rich, creamy parmesan sauce with grilled chicken breast and fresh herbs.</p>
+                        <button class="text-cilantro-600 font-medium hover:text-cilantro-800 transition-colors flex items-center gap-2">
+                            Order Now <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div class="bg-cream rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group fade-up" style="transition-delay: 200ms;">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" alt="Iced Caramel Macchiato" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-serif font-bold text-gray-900">Iced Caramel Macchiato</h3>
+                            <span class="text-lg font-semibold text-cilantro-600">Rs. 650</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Freshly pulled espresso poured over chilled milk and vanilla syrup, topped with caramel drizzle.</p>
+                        <button class="text-cilantro-600 font-medium hover:text-cilantro-800 transition-colors flex items-center gap-2">
+                            Order Now <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-up">
+                <button class="border-2 border-cilantro-600 text-cilantro-700 hover:bg-cilantro-600 hover:text-white px-8 py-3 rounded-full font-medium transition-all">
+                    View Full Menu
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-cilantro-900 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-up">
+            <i class="fa-brands fa-instagram text-4xl text-cilantro-300 mb-4"></i>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-2">Follow The Vibe</h2>
+            <a href="https://www.instagram.com/cafecilantropk/?hl=en" target="_blank" class="text-cilantro-200 hover:text-white transition-colors mb-12 inline-block">@cafecilantropk</a>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+                <!-- Mock Insta Posts -->
+                <a href="#" class="group relative block overflow-hidden rounded-xl aspect-square">
+                    <img src="https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=400&q=80" alt="Insta 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fa-solid fa-heart text-white text-2xl"></i>
+                    </div>
+                </a>
+                <a href="#" class="group relative block overflow-hidden rounded-xl aspect-square">
+                    <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=400&q=80" alt="Insta 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fa-solid fa-heart text-white text-2xl"></i>
+                    </div>
+                </a>
+                <a href="#" class="group relative block overflow-hidden rounded-xl aspect-square hidden md:block">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80" alt="Insta 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fa-solid fa-heart text-white text-2xl"></i>
+                    </div>
+                </a>
+                <a href="#" class="group relative block overflow-hidden rounded-xl aspect-square hidden md:block">
+                    <img src="https://images.unsplash.com/photo-1481833761820-0509d3217039?auto=format&fit=crop&w=400&q=80" alt="Insta 4" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fa-solid fa-heart text-white text-2xl"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-gray-900 text-gray-300 pt-20 pb-10 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div>
+                    <a href="#" class="flex items-center gap-2 mb-6">
+                        <i class="fa-solid fa-leaf text-cilantro-500 text-2xl"></i>
+                        <span class="font-serif text-2xl font-bold text-white">Cafe Cilantro</span>
+                    </a>
+                    <p class="text-gray-400 mb-6">Serving the finest coffee and continental cuisine in Faisalabad. A place where every flavor tells a story.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/cafecilantropk/?hl=en" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-cilantro-600 hover:text-white transition-colors">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-cilantro-600 hover:text-white transition-colors">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-cilantro-600 hover:text-white transition-colors">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact & Location -->
+                <div>
+                    <h4 class="text-white font-serif font-bold text-xl mb-6">Find Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-cilantro-500"></i>
+                            <span>Faisalabad, Punjab<br/>Pakistan</span> <!-- Used map context -->
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-cilantro-500"></i>
+                            <span>+92 XXX XXXXXXX</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-cilantro-500"></i>
+                            <span>hello@cafecilantro.pk</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Opening Hours -->
+                <div>
+                    <h4 class="text-white font-serif font-bold text-xl mb-6">Opening Hours</h4>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between border-b border-gray-800 pb-2">
+                            <span>Monday - Thursday</span>
+                            <span class="text-white">12:00 PM - 12:00 AM</span>
+                        </li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2">
+                            <span>Friday</span>
+                            <span class="text-white">2:30 PM - 1:00 AM</span>
+                        </li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2">
+                            <span>Saturday - Sunday</span>
+                            <span class="text-white">12:00 PM - 1:00 AM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2026 Cafe Cilantro. All rights reserved.</p>
+                <p class="mt-4 md:mt-0 text-gray-500">Designed as a Demo Website Pitch</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const navIcon = btn.querySelector('i');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                if (menu.classList.contains('hidden')) {
+                    navIcon.classList.remove('fa-xmark');
+                    navIcon.classList.add('fa-bars');
+                } else {
+                    navIcon.classList.remove('fa-bars');
+                    navIcon.classList.add('fa-xmark');
+                }
+            });
+
+            // Close mobile menu on link click
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    navIcon.classList.remove('fa-xmark');
+                    navIcon.classList.add('fa-bars');
+                });
+            });
+
+            // Sticky Navbar Effect
+            const navbar = document.getElementById('navbar');
+            const navLogoText = document.getElementById('nav-logo-text');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileBtnIcon = document.querySelector('#mobile-menu-btn i');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('glass-nav', 'py-2', 'shadow-sm');
+                    navbar.classList.remove('py-4');
+                    navLogoText.classList.replace('text-white', 'text-gray-900');
+                    navLinks.forEach(link => {
+                        link.classList.replace('text-white', 'text-gray-700');
+                    });
+                    mobileBtnIcon.classList.replace('text-white', 'text-gray-900');
+                } else {
+                    navbar.classList.remove('glass-nav', 'py-2', 'shadow-sm');
+                    navbar.classList.add('py-4');
+                    navLogoText.classList.replace('text-gray-900', 'text-white');
+                    navLinks.forEach(link => {
+                        link.classList.replace('text-gray-700', 'text-white');
+                    });
+                    mobileBtnIcon.classList.replace('text-gray-900', 'text-white');
+                }
+            });
+
+            // Scroll Animation Observer (Fade up effect)
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-up').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
